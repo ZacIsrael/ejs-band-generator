@@ -12,10 +12,20 @@ const port = 3000;
 //Step 4 - Add a dynamic year to the footer.
 //Hint: Google to find out how to get the current year using JS.
 
+// Set EJS as the templating engine
+app.set('view engine', 'ejs');
+
+// tells EJS that all of the static files are in the public folder
+app.use(express.static("public"));
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   //Step 1 - Make the get route work and render the index.ejs file.
+  // retrieve & render the default file (index.ejs)
+  console.log('req.method = ', req.method);
+  res.render('index');
 });
 
 app.post("/submit", (req, res) => {
